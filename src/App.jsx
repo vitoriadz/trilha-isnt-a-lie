@@ -1,121 +1,78 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import Quadro from './Quadro';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cena, setCena] = useState('introducao');
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="game-wrapper">
+      {/* --- CENA 1: QUADRINHOS DE INTRODUÇÃO --- */}
+      // ... no seu return
+{cena === 'introducao' && (
+  <div className="story-container">
+    <Quadro bgImage="/lab-fundo.png">
+      <h2>O dia começou gelado no SMD...</h2>
+    </Quadro>
 
-      <div className="ticks"></div>
+    <Quadro bgImage="/veterano-vulto.png">
+      <h2>Você sente que alguém está te observando.</h2>
+    </Quadro>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+    <Quadro bgImage="/painel.png">
+      <button className="btn-navegar" onClick={() => setCena('corredor')}>
+        Ir para o Corredor
+      </button>
+    </Quadro>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    <Quadro bgImage="/painel.png">
+      <button className="btn-navegar" onClick={() => setCena('corredor')}>
+        Ir para o Corredor
+      </button>
+    </Quadro>
+
+    <Quadro bgImage="/painel.png">
+      <button className="btn-navegar" onClick={() => setCena('corredor')}>
+        Ir para o Corredor
+      </button>
+    </Quadro>
+
+    <Quadro bgImage="/painel.png">
+      <button className="btn-navegar" onClick={() => setCena('corredor')}>
+        Ir para o Corredor
+      </button>
+    </Quadro>
+  </div>
+)}
+
+      {/* --- CENA 2: CORREDOR (FIXO) --- */}
+      {cena === 'corredor' && (
+        <div className="cena-corredor-fixa">
+          <div className="menu-oficinas">
+            <h1>O Corredor dos Laboratórios</h1>
+            <p>Escolha seu destino:</p>
+            <div className="grid-oficinas">
+              <button onClick={() => setCena('oficina_jogos')}>Lab 5: Jogos</button>
+              <button onClick={() => setCena('oficina_design')}>Lab 2: Design</button>
+              <button onClick={() => setCena('oficina_audiovisual')}>Lab 3: Audiovisual</button>
+              <button onClick={() => setCena('oficina_animacao')}>Lab 1: Animação</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* --- CENA 3: OFICINA DE JOGOS --- */}
+      {cena === 'oficina_jogos' && (
+        <div className="story-container">
+          <section className="quadro">
+             <h2>Bem-vindo ao Lab de Jogos</h2>
+             <button onClick={() => setCena('corredor')}>Voltar</button>
+          </section>
+          {/* Adicionaremos a lógica do minigame aqui depois */}
+        </div>
+      )}
+    </div>
   )
 }
 
-export default App
+export default App;
