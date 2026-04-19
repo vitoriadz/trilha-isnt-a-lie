@@ -1,33 +1,59 @@
-import { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const Quadro = ({ children, bgImage }) => {
-  const [visivel, setVisivel] = useState(false);
-  const elementoRef = useRef(null);
+  const ref = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisivel(true);
-        }
-      },
-      { threshold: 0.3 } // Só ativa quando 30% do quadro aparece
-    );
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
 
-    if (elementoRef.current) observer.observe(elementoRef.current);
-    return () => observer.disconnect();
-  }, []);
+  // FUNDO (parallax principal)
+  const bgY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.2, 1]);
+
+  // CONTEÚDO ACOMPANHA O FUNDO
+  const contentY = bgY;
+
+  // OPACIDADE DO QUADRO
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.8, 1],
+    [0, 1, 1, 0]
+  );
 
   return (
-    <section 
-      ref={elementoRef}
-      className={`quadro ${visivel ? 'aparecer' : ''}`}
-      style={{ backgroundImage: `url(${bgImage})` }}
+    <motion.section
+      ref={ref}
+      className="quadro"
+      style={{ opacity }}
     >
-      <div className="conteudo-quadro">
+      {/* FUNDO PARALLAX */}
+      <motion.div
+        className="bg-parallax"
+        style={{
+          y: bgY,
+          scale: bgScale,
+          backgroundImage: `url(${bgImage})`
+        }}
+      />
+
+      {/* CONTEÚDO */}
+      <motion.div
+        className="conteudo-quadro"
+        style={{ y: contentY }}
+        initial={{ opacity: 0, y: 100, scale: 0.95 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 20
+        }}
+      >
         {children}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 
