@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import fundo from './assets/imagemexemplo.png';
+import imagemcorredor from './assets/imagemcorredor.jpeg';
+import pegadas from './assets/pegadas.png';
 import Quadro from "./Quadro";
 import MiniGameJogos from "./MiniGameJogos";
 import "./App.css";
@@ -46,21 +48,54 @@ function App() {
           </motion.div>
         )}
 
-        {/* CORREDOR */}
-        {cena === "corredor" && (
-          <motion.div key="corredor" {...cenaAnim} className="cena-corredor-fixa">
-            <div className="menu-oficinas">
-              <h1>Corredor dos Laboratórios</h1>
+{/*CORREDOR*/}
+{cena === "corredor" && (
+  <motion.div key="corredor" {...cenaAnim} className="cena-corredor-fixa">
+    
+    <div className="corredor-container">
+      <img src={imagemcorredor} alt="Corredor" className="corredor-img" />
 
-              <div className="grid-oficinas">
-                <button onClick={() => setCena("oficina_jogos")}>Jogos</button>
-                <button onClick={() => setCena("oficina_design")}>Design</button>
-                <button onClick={() => setCena("oficina_audiovisual")}>Audiovisual</button>
-                <button onClick={() => setCena("oficina_animacao")}>Animação</button>
-              </div>
-            </div>
-          </motion.div>
-        )}
+      {/* PORTA 1 */}
+      <button 
+        className="porta porta1"
+        onClick={() => setCena("oficina_jogos")}
+      >
+        <img src={pegadas} alt="" />
+        <span className="tooltip">Jogos</span>
+      </button>
+
+      {/* PORTA 2 */}
+      <button 
+        className="porta porta2"
+        onClick={() => setCena("oficina_design")}
+      >
+        <img src={pegadas} alt="" />
+        <span className="tooltip">Design</span>
+      </button>
+
+      {/* PORTA 3 */}
+      <button 
+        className="porta porta3"
+        onClick={() => setCena("oficina_audiovisual")}
+      >
+        <img src={pegadas} alt="" />
+        <span className="tooltip">Audiovisual</span>
+      </button>
+
+      {/* PORTA 4 */}
+      <button 
+        className="porta porta4"
+        onClick={() => setCena("oficina_animacao")}
+      >
+        <img src={pegadas} alt="" />
+        <span className="tooltip">Animação</span>
+      </button>
+
+    </div>
+
+  </motion.div>
+)}
+
 
         {/* OFICINA JOGOS */}
         {cena === "oficina_jogos" && (
@@ -103,11 +138,11 @@ function App() {
 
             <Quadro bgImage={fundo}>
               <button onClick={() => setCena("final_ru")}>
-                🍜 Ir com Yuri
+                Ir com Yuri
               </button>
 
               <button onClick={() => setCena("corredor")}>
-                🔁 Explorar mais
+                Explorar mais
               </button>
             </Quadro>
 
@@ -116,7 +151,7 @@ function App() {
 
       </AnimatePresence>
 
-      {/* 🔥 OVERLAY CORRETO (APENAS UM) */}
+      {/*OVERLAY CORRETO (APENAS UM) */}
       <AnimatePresence>
         {computadorAberto && (
           <motion.div
