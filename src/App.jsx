@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 
 // Estilos
 import './styles/corredor.css';
-import './styles/ofc-jogos.css';
 import './styles/quadros.css';
 import "./App.css";
 
@@ -15,6 +14,9 @@ import click from "./sounds/click.mp3";
 
 import Quadro from "./Quadro";
 import Modal from "./Modal"; 
+import OficinaJogos from "./cenas/OficinaJogos";
+import OficinaDesign from "./cenas/OficinaDesign";
+
 
 const cenaAnim = {
   initial: { opacity: 0, x: 80 },
@@ -31,78 +33,88 @@ function App() {
   const somPorta = useRef(null);
   const musicaFundo = useRef(null);
 
-  const tocarSom = (audioRef) => {
-    if (somAtivo && audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(() => {});
+ const tocarSom = () => {
+    if (somAtivo && somPorta.current) {
+      somPorta.current.currentTime = 0;
+      somPorta.current.play().catch(() => {});
     }
+  };
+
+  const mudarCena = (novaCena) => {
+    tocarSom();
+    setCena(novaCena);
   };
 
   return (
     <div className="game-wrapper">
-      {/* Interface de Controle */}
+      {/* BOTÃO FIXO: SOM */}
       <button className="button-geral btn-som" onClick={() => setSomAtivo(!somAtivo)}>
         {somAtivo ? "🔊 ON" : "🔈 OFF"}
       </button>
 
       <AnimatePresence mode="wait">
         
-        {/* RENDERIZAÇÃO DE CENAS */}
+        {/* CENA: INTRODUÇÃO */}
         {cena === "introducao" && (
           <motion.div key="intro" {...cenaAnim} className="story-container">
             <Quadro bgImage={fundo}><h2>Você acorda em um laboratório...</h2></Quadro>
-            <Quadro bgImage={fundo}><h2>Uma presença observa...</h2></Quadro>
             <Quadro bgImage={fundo}>
-              <button className="button-geral" onClick={() => setCena("corredor")}>
+              <button className="button-geral" onClick={() => mudarCena("corredor")}>
                 Ir para o Corredor
               </button>
             </Quadro>
           </motion.div>
         )}
 
+        {/* CENA: CORREDOR */}
         {cena === "corredor" && (
           <motion.div key="corredor" {...cenaAnim} className="cena-corredor-fixa">
             <div className="corredor-container">
               <img src={imagemcorredor} alt="Corredor" className="corredor-img" />
-              <Porta id="porta1" label="Jogos" onClick={() => { tocarSom(somPorta); setCena("oficina_jogos"); }} />
-              <Porta id="porta2" label="Design" onClick={() => { tocarSom(somPorta); setCena("oficina_design"); }} />
-              <Porta id="porta3" label="Audiovisual" onClick={() => { tocarSom(somPorta); setCena("oficina_audiovisual"); }} />
-              <Porta id="porta4" label="Animação" onClick={() => { tocarSom(somPorta); setCena("oficina_animacao"); }} />
+              <Porta id='porta0' label='Inicio' onClick={() => mudarCena("introducao")} />
+              <Porta id="porta1" label="Jogos" onClick={() => mudarCena("oficina_jogos")} />
+              <Porta id="porta2" label="Design" onClick={() => mudarCena("oficina_design")} />
+              <Porta id="porta3" label="Audiovisual" onClick={() => mudarCena("oficina_audiovisual")} />
+              <Porta id="porta4" label="Animação" onClick={() => mudarCena("oficina_animacao")} />
             </div>
           </motion.div>
         )}
 
-        {cena === "oficina_jogos" && (
-          <motion.div key="jogos" {...cenaAnim} className="story-container">
-            <Quadro bgImage={fundo}><h2>Lab de Jogos</h2></Quadro>
-            <Quadro bgImage={fundo}>
-              <button className="button-geral" onClick={() => setComputadorAberto(true)}>Jogar</button>
-              <button className="button-geral" onClick={() => setCena("corredor")}>Voltar</button>
-            </Quadro>
-          </motion.div>
+        {/* CENAS DAS OFICINAS */}
+        {cena.includes("jogos") && (
+          <OficinaJogos 
+            cena={cena} 
+            setCena={setCena} 
+            setComputadorAberto={setComputadorAberto} 
+            cenaAnim={cenaAnim} 
+          />
         )}
 
-        {cena === "oficina_jogos_final" && (
-          <motion.div key="final" {...cenaAnim} className="story-container">
-            <Quadro bgImage={fundo}><h2>IARA: "Nada mal... você manda bem."</h2></Quadro>
-            <Quadro bgImage={fundo}>
-              <button className="button-geral" onClick={() => setCena("final_ru")}>Ir com Iara</button>
-            </Quadro>
-          </motion.div>
-        )}
+        {cena.includes("design") && (
+    <OficinaDesign 
+      cena={cena} 
+      setCena={setCena} 
+      setPapelAberto={setComputadorAberto} 
+      cenaAnimProp={cenaAnim} 
+    />
+  )}
+
 
       </AnimatePresence>
 
-      {/* MODAL DO COMPUTADOR */}
+      {/* MODAL PC */}
       <AnimatePresence>
-        <Modal 
-          isOpen={computadorAberto} 
-          onClose={() => setComputadorAberto(false)}
-          onWin={() => {
-            setComputadorAberto(false);
-            setCena("oficina_jogos_final");
-          }}
-        />
+        {computadorAberto && (
+          <Modal 
+            isOpen={computadorAberto} 
+  onClose={() => setComputadorAberto(false)}
+  cena={cena} // Passando a cena atual para o modal saber o que exibir
+  onWin={() => {
+    setComputadorAberto(false);
+    setCena(cena + "_final");
+  }}
+          />
+        )}
       </AnimatePresence>
 
       <audio ref={somPorta} src={click} preload="auto" />
@@ -110,7 +122,6 @@ function App() {
   );
 }
 
-// Sub-componente para evitar repetição de código das portas
 function Porta({ id, label, onClick }) {
   return (
     <button className={`porta ${id}`} onClick={onClick}>

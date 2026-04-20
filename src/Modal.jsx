@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
-import MiniGameJogos from "./MiniGameJogos";
+import MiniGameJogos from "./minijogos/MiniGameJogos"; 
+import MiniGameDesign from "./minijogos/MiniGameDesign";
 
-const PCModal = ({ isOpen, onClose, onWin }) => {
+const Modal = ({ isOpen, onClose, onWin, cena }) => {
   if (!isOpen) return null;
+
+  // Define se é a oficina de jogos ou design
+  const isJogos = cena.includes("jogos");
+  const isDesign = cena.includes("design");
 
   return (
     <motion.div 
@@ -12,7 +17,7 @@ const PCModal = ({ isOpen, onClose, onWin }) => {
       exit={{ opacity: 0 }}
     >
       <motion.div 
-        className="janela-pc"
+        className={isDesign ? "folha-papel" : "janela-pc"}
         initial={{ scale: 0.8, y: 50 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.8, y: 50 }}
@@ -23,14 +28,19 @@ const PCModal = ({ isOpen, onClose, onWin }) => {
             <div className="dot yellow"></div>
             <div className="dot green"></div>
           </div>
-          <span className="window-title">PROJECT_IARA_OS // PHYSICS_MODULE</span>
+          <span className="window-title">
+            {isJogos ? "PROJECT_IARA_OS // PHYSICS_MODULE" : "LUAN_SKETCH // LOW_FI_PROTOTYPE"}
+          </span>
           <button className="btn-close-x" onClick={onClose}>✕</button>
         </div>
 
-        <MiniGameJogos onWin={onWin} />
+        {/* Lógica de Troca de Jogo */}
+        {isJogos && <MiniGameJogos onWin={onWin} />}
+        {isDesign && <MiniGameDesign onWin={onWin} />}
+        
       </motion.div>
     </motion.div>
   );
 };
 
-export default PCModal;
+export default Modal;

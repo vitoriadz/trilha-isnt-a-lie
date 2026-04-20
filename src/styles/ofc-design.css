@@ -1,0 +1,102 @@
+.folha-prototipo {
+  background: #fdfdfd;
+  background-image: radial-gradient(#e5e5e5 1px, transparent 1px); /* Pontilhado de caderno */
+  background-size: 20px 20px;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+  min-height: 400px;
+  font-family: 'Comic Sans MS', 'Indie Flower', cursive; /* Fonte que parece escrita à mão */
+  color: #2d3436;
+}
+
+.item-prototipo {
+  background: white;
+  border: 2px solid #2d3436;
+  margin-bottom: 10px;
+  padding: 15px;
+  cursor: grab;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  box-shadow: 3px 3px 0px #2d3436;
+}
+
+.item-prototipo.titulo {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.drag-handle {
+  margin-right: 15px;
+  color: #aaa;
+}
+
+.instrucao-luan {
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #636e72;
+}
+
+.barra-progresso-container {
+  width: 100%;
+  height: 8px;
+  background: #eee;
+  border-radius: 10px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.barra-progresso-fill {
+  height: 100%;
+  background: #4caf50;
+}
+
+.item-prototipo {
+  transition: border-color 0.3s, background 0.3s;
+  border-left: 8px solid #ccc;
+}
+
+/* Feedback visual de acerto/erro */
+.item-prototipo.correto {
+  border-left-color: #4caf50;
+  background: #f0fff0;
+}
+
+.item-prototipo.errado {
+  border-left-color: #ffeb3b; /* Amarelo indicando que ainda está em processo */
+}
+
+.label-tecnica {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #888;
+  display: block;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+}
+
+.item-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.check-icon {
+  margin-left: auto;
+  color: #4caf50;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.feedback-vitoria {
+  text-align: center;
+  color: #2e7d32;
+  font-weight: bold;
+  margin-top: 15px;
+  padding: 10px;
+  background: #e8f5e9;
+  border-radius: 5px;
+}
+
