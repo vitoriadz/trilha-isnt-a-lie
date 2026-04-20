@@ -1,0 +1,119 @@
+/* CORREDOR */
+.corredor-container {
+  position: relative;
+}
+
+.corredor-img {
+  width: 100%;
+  height: auto; 
+  display: block;
+}
+
+/* BOTÃO BASE */
+.porta {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+
+  border-radius: 100%;
+  border: none;
+  cursor: pointer;
+
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(3px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.2s ease;
+}
+
+/* ÍCONE */
+.porta img {
+  width: 20px;
+  height: 20px;
+  transition: filter 0.2s ease;
+}
+
+/* HOVER */
+.porta:hover {
+  animation: pulo 0.4s ease;
+  box-shadow: 0 0 20px rgba(255, 200, 0, 0.7);
+  background-color: #000000;
+  border: none;
+}
+
+.porta:hover img {
+  filter: brightness(0) saturate(100%) invert(65%) sepia(90%) saturate(600%) hue-rotate(5deg);
+}
+
+/* ANIMAÇÃO */
+@keyframes pulo {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-12px); }
+  60%  { transform: translateY(4px); }
+  100% { transform: translateY(0); }
+}
+
+/* TOOLTIP (balão) */
+.tooltip {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: rgba(255, 255, 255, 0.9);
+  color: rgb(0, 0, 0);
+  padding: 6px 12px;
+  border-radius: 8px;
+
+  font-size: 13px;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.2s;
+}
+
+/* mostrar tooltip */
+.porta:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* setinha do balão */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent;
+}
+
+/* POSIÇÕES */
+.porta1 {
+  top: 43%;
+  left: 11%;
+}
+
+.porta2 {
+  top: 43%;
+  right: 25%;
+}
+
+.porta3 {
+  top: 43%;
+  right: 52%;
+}
+
+.porta4 {
+  top: 43%;
+  left: 30%;
+}

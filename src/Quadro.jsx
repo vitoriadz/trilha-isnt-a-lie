@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 
 const Quadro = ({ children, bgImage }) => {
@@ -9,46 +9,40 @@ const Quadro = ({ children, bgImage }) => {
     offset: ["start end", "end start"]
   });
 
-  // FUNDO (parallax principal)
-  const bgY = useTransform(scrollYProgress, [0, 1], [150, -150]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.2, 1]);
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
-  // CONTEÚDO ACOMPANHA O FUNDO
-  const contentY = bgY;
 
-  // OPACIDADE DO QUADRO
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.8, 1],
-    [0, 1, 1, 0]
-  );
+  const bgY = useTransform(smoothProgress, [0, 1], ["-10%", "10%"]);
+  
+  const contentY = useTransform(smoothProgress, [0, 0.4, 0.6, 1], [100, 0, 0, -100]);
+  const contentOpacity = useTransform(smoothProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const contentScale = useTransform(smoothProgress, [0, 0.4, 0.6, 1], [0.8, 1, 1, 0.8]);
 
   return (
     <motion.section
       ref={ref}
       className="quadro"
-      style={{ opacity }}
+      style={{ opacity: contentOpacity }}
     >
-      {/* FUNDO PARALLAX */}
+
       <motion.div
         className="bg-parallax"
         style={{
           y: bgY,
-          scale: bgScale,
-          backgroundImage: `url(${bgImage})`
+          backgroundImage: `url(${bgImage})`,
+          scale: 1.2 
         }}
       />
 
-      {/* CONTEÚDO */}
       <motion.div
         className="conteudo-quadro"
-        style={{ y: contentY }}
-        initial={{ opacity: 0, y: 100, scale: 0.95 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 20
+        style={{ 
+          y: contentY,
+          scale: contentScale
         }}
       >
         {children}
