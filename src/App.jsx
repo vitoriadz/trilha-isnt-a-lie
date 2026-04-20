@@ -1,15 +1,38 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import fundo from './assets/imagemexemplo.png';
 import imagemcorredor from './assets/imagemcorredor.jpeg';
 import pegadas from './assets/pegadas.png';
 import Quadro from "./Quadro";
 import MiniGameJogos from "./MiniGameJogos";
+import click from "./sounds/click.mp3";
 import "./App.css";
+
 
 function App() {
   const [cena, setCena] = useState("introducao");
   const [computadorAberto, setComputadorAberto] = useState(false);
+  const [somAtivo, setSomAtivo] = useState(true);
+
+  const somPorta = useRef(null);
+  const musicaFundo = useRef(null);
+
+   const tocarSom = (audioRef) => {
+    if (!somAtivo) return;
+
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(() => {});
+    }
+  };
+
+  useEffect(() => {
+    if (somAtivo) {
+      musicaFundo.current?.play().catch(() => {});
+    } else {
+      musicaFundo.current?.pause();
+    }
+  }, [somAtivo]);
 
   const cenaAnim = {
     initial: { opacity: 0, x: 80 },
@@ -20,6 +43,9 @@ function App() {
 
   return (
     <div className="game-wrapper">
+       <button onClick={() => setSomAtivo(!somAtivo)}>
+        {somAtivo ? "ON" : "OFF"}
+      </button>
 
       <AnimatePresence mode="wait">
 
@@ -56,10 +82,7 @@ function App() {
       <img src={imagemcorredor} alt="Corredor" className="corredor-img" />
 
       {/* PORTA 1 */}
-      <button 
-        className="porta porta1"
-        onClick={() => setCena("oficina_jogos")}
-      >
+      <button className="porta porta1" onClick={() => {tocarSom(somPorta); setCena("oficina_jogos");}}>
         <img src={pegadas} alt="" />
         <span className="tooltip">Jogos</span>
       </button>
@@ -67,7 +90,7 @@ function App() {
       {/* PORTA 2 */}
       <button 
         className="porta porta2"
-        onClick={() => setCena("oficina_design")}
+        onClick={() => {tocarSom(somPorta); setCena("oficina_design");}}
       >
         <img src={pegadas} alt="" />
         <span className="tooltip">Design</span>
@@ -76,7 +99,7 @@ function App() {
       {/* PORTA 3 */}
       <button 
         className="porta porta3"
-        onClick={() => setCena("oficina_audiovisual")}
+        onClick={() => {tocarSom(somPorta); setCena("oficina_audiovisual");}}
       >
         <img src={pegadas} alt="" />
         <span className="tooltip">Audiovisual</span>
@@ -85,7 +108,7 @@ function App() {
       {/* PORTA 4 */}
       <button 
         className="porta porta4"
-        onClick={() => setCena("oficina_animacao")}
+        onClick={() => {tocarSom(somPorta); setCena("oficina_animacao");}}
       >
         <img src={pegadas} alt="" />
         <span className="tooltip">Animação</span>
@@ -184,6 +207,7 @@ function App() {
         )}
       </AnimatePresence>
 
+        <audio ref={somPorta} src={click} preload="auto" />
     </div>
   );
 }

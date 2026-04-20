@@ -261,3 +261,20 @@ button:hover {
   color: #58a6ff;
   text-align: center;
 }
+
+/* SOM */
+
+.btn-audio {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+
+  background: rgba(0,0,0,0.6);
+  color: white;
+  cursor: pointer;
+}
