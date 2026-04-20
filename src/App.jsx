@@ -16,6 +16,7 @@ import Quadro from "./Quadro";
 import Modal from "./Modal"; 
 import OficinaJogos from "./cenas/OficinaJogos";
 import OficinaDesign from "./cenas/OficinaDesign";
+import OficinaProgramacao from "./cenas/OficinaProg";
 
 
 const cenaAnim = {
@@ -75,7 +76,7 @@ function App() {
               <Porta id="porta1" label="Jogos" onClick={() => mudarCena("oficina_jogos")} />
               <Porta id="porta2" label="Design" onClick={() => mudarCena("oficina_design")} />
               <Porta id="porta3" label="Audiovisual" onClick={() => mudarCena("oficina_audiovisual")} />
-              <Porta id="porta4" label="Animação" onClick={() => mudarCena("oficina_animacao")} />
+              <Porta id="porta4" label="Programação" onClick={() => mudarCena("oficina_programacao")} />
             </div>
           </motion.div>
         )}
@@ -98,6 +99,15 @@ function App() {
       cenaAnimProp={cenaAnim} 
     />
   )}
+
+  {cena.includes("programacao") && (
+  <OficinaProgramacao 
+    cena={cena} 
+    setCena={setCena} 
+    setComputadorAberto={setComputadorAberto} 
+    cenaAnim={cenaAnim} 
+  />
+)}
 
 
       </AnimatePresence>

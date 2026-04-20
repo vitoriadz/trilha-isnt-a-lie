@@ -1,13 +1,50 @@
 import { motion } from "framer-motion";
 import MiniGameJogos from "./minijogos/MiniGameJogos"; 
 import MiniGameDesign from "./minijogos/MiniGameDesign";
+import MiniGameProgramacao from "./minijogos/MiniGameProgramacao";
 
 const Modal = ({ isOpen, onClose, onWin, cena }) => {
   if (!isOpen) return null;
 
-  // Define se é a oficina de jogos ou design
-  const isJogos = cena.includes("jogos");
-  const isDesign = cena.includes("design");
+  function getTipo() {
+    if (cena.includes("jogos")) return "jogos";
+    if (cena.includes("design")) return "design";
+    if (cena.includes("programacao")) return "programacao";
+    if (cena.includes("audiovisual")) return "audiovisual";
+    return null;
+  }
+
+  const tipo = getTipo();
+
+  function renderTitulo() {
+    switch (tipo) {
+      case "jogos":
+        return "PROJECT_IARA_OS // PHYSICS_MODULE";
+      case "design":
+        return "LUAN_SKETCH // LOW_FI_PROTOTYPE";
+      case "programacao":
+        return "EVE_DEV_ENV // DRAW_MODULE";
+      case "audiovisual":
+        return "VIDEO_EDITOR // TIMELINE_MODULE";
+      default:
+        return "SYSTEM";
+    }
+  }
+
+  function renderMiniGame() {
+    switch (tipo) {
+      case "jogos":
+        return <MiniGameJogos onWin={onWin} />;
+      case "design":
+        return <MiniGameDesign onWin={onWin} />;
+      case "programacao":
+        return <MiniGameProgramacao onWin={onWin} />;
+      case "audiovisual":
+        return <div>MiniGame Audiovisual</div>; 
+      default:
+        return null;
+    }
+  }
 
   return (
     <motion.div 
@@ -17,7 +54,7 @@ const Modal = ({ isOpen, onClose, onWin, cena }) => {
       exit={{ opacity: 0 }}
     >
       <motion.div 
-        className={isDesign ? "folha-papel" : "janela-pc"}
+        className={tipo === "design" ? "folha-papel" : "janela-pc"}
         initial={{ scale: 0.8, y: 50 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.8, y: 50 }}
@@ -28,15 +65,15 @@ const Modal = ({ isOpen, onClose, onWin, cena }) => {
             <div className="dot yellow"></div>
             <div className="dot green"></div>
           </div>
+
           <span className="window-title">
-            {isJogos ? "PROJECT_IARA_OS // PHYSICS_MODULE" : "LUAN_SKETCH // LOW_FI_PROTOTYPE"}
+            {renderTitulo()}
           </span>
+
           <button className="btn-close-x" onClick={onClose}>✕</button>
         </div>
 
-        {/* Lógica de Troca de Jogo */}
-        {isJogos && <MiniGameJogos onWin={onWin} />}
-        {isDesign && <MiniGameDesign onWin={onWin} />}
+        {renderMiniGame()}
         
       </motion.div>
     </motion.div>
