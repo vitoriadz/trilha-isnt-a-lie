@@ -1,0 +1,38 @@
+.code-placeholder {
+  color: #888;
+  border-bottom: 2px dashed #555;
+  padding: 2px 6px;
+  margin: 0 4px;
+}
+
+.options-panel {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.options-panel p {
+  width: 100%;
+  margin-bottom: 5px;
+  color: #aaa;
+}
+
+.options-panel button {
+  background: #222;
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.options-panel button:hover {
+  background: #00ffcc;
+  color: #000;
+}
+
+.kirby-img {
+  width: 160px;
+  height: auto;
+}
