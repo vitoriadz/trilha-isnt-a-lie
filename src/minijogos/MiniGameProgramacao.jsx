@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import kirbyBase from "../assets/Kirby_NoCircle.svg";
 import kirbySemCor from "../assets/Kirby_NoFill.svg";
 import kirbyColorido from "../assets/Kirby_Finale.svg";
+import kirbyColorOverlay from "../assets/kirbyArms.svg";
 
 export default function MiniGameProgramacao({ onWin }) {
   const [fase, setFase] = useState(1);
@@ -26,7 +27,14 @@ export default function MiniGameProgramacao({ onWin }) {
     }
   }
 
-  
+  function getOverlayImage() {
+    if (cor === "pink") {
+      return kirbyColorOverlay;
+    }
+    return kirbyBase;
+  }
+
+
   function escolherCor(opcao) {
     if (opcao === "pink") {
       setCor("pink");
@@ -40,19 +48,19 @@ export default function MiniGameProgramacao({ onWin }) {
     }
   }
 
-  
+
   function getKirbyImage() {
-   
+
     if (forma && cor === "pink") {
       return kirbyColorido;
     }
 
-    
+
     if (forma) {
       return kirbySemCor;
     }
 
-    
+
     return kirbyBase;
   }
 
@@ -129,21 +137,27 @@ export default function MiniGameProgramacao({ onWin }) {
         </div>
       </div>
 
-      {/* 🎮 PREVIEW DO KIRBY */}
+      
       <div className="jogo-section">
         <div className="preview-label">LIVE_PREVIEW</div>
 
         <div className="game-preview-box">
           <div className="kirby-preview">
 
-            <motion.img
-              key={getKirbyImage()}
-              src={getKirbyImage()}
-              alt="Kirby"
-              className="kirby-img"
-              initial={{ scale: 0.1, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.1 }}
+            {/* CORPO */}
+            {forma && (
+              <div
+                className="kirby-body"
+                style={{
+                  backgroundColor: cor === "pink" ? "#F3A5AA" : "#ddd3"
+                }}
+              />
+            )}
+
+            <img
+              src={getOverlayImage()}
+              alt="Kirby partes"
+              className="kirby-overlay"
             />
 
           </div>
