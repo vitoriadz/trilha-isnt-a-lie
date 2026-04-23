@@ -118,6 +118,20 @@
   left: 30%;
 }
 
+.porta5 {
+  position: absolute;
+  bottom: 13%;
+  right: 0%;
+}
+
+
+@media (max-width: 1024px) {
+  .porta5 {
+    right: 10%;  
+    bottom: 15%; 
+  }
+}
+
 .porta0 {
   bottom: 13%;
   left: 10%;
