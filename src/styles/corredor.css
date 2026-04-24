@@ -1,6 +1,7 @@
 /* CORREDOR */
 .corredor-container {
   position: relative;
+  margin-top: 40px;
 }
 
 .corredor-img {
@@ -120,8 +121,8 @@
 
 .porta5 {
   position: absolute;
-  bottom: 13%;
-  right: 0%;
+  bottom: 10%;
+  left: 10%;
 }
 
 

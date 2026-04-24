@@ -10,6 +10,8 @@ import "./App.css";
 import QUADRO1 from './assets/intro/QUADRO1.png';
 import QUADRO2 from './assets/intro/QUADRO2.png';
 import QUADRO3 from './assets/intro/QUADRO3.png';
+import QUADRO5 from './assets/intro/QUADRO5.png';
+import FUNDOQUADRO5 from './assets/intro/fUNDOQUADRO5.png';
 import HALL from './assets/intro/HALL.png'
 import EVE from './assets/intro/EVE.png';
 import LUAN from './assets/intro/LUAN.png';
@@ -19,6 +21,7 @@ import FALA1QUADRO1 from './assets/intro/FALA1QUADRO1.png';
 import FALA2QUADRO1 from './assets/intro/FALA2QUADRO1.png';
 import FALASQUADRO2 from './assets/intro/FALASQUADRO2.png';
 import FALASQUADRO3 from './assets/intro/FALASQUADRO3.png';
+import FALASQUADRO5 from './assets/intro/FALASQUADRO5.png';
 import imagemcorredor from './assets/imagemcorredor.jpeg';
 import pegadas from './assets/pegadas.png';
 import click from "./sounds/click.mp3";
@@ -114,7 +117,12 @@ function App() {
             <Quadro bgImage={QUADRO1} baloes={[FALA1QUADRO1, FALA2QUADRO1]} balaoStyle={{marginTop:"25%", maxWidth: "800px", height: "350px", gap: "250px" }} />
             <Quadro bgImage={QUADRO2} baloes={[FALASQUADRO2]} balaoStyle={{marginTop:"10%", marginLeft: "35%", maxWidth: "800px",  height: "500px" }}  />
             <Quadro bgImage={QUADRO3} baloes={[FALASQUADRO3]} balaoStyle={{marginTop:"10%",  height: "400px" }} />
-            <Quadro bgImage={HALL} baloes={[EVE, IARA, LUAN, THEO]} balaoStyle={{justifyContent: "center", height: "80%" }}><Porta id='porta5' label='Corredor' onClick={() => mudarCena("corredor")} /></Quadro>
+            <Quadro bgImage={HALL} baloes={[EVE, IARA, LUAN, THEO]} balaoStyle={{justifyContent: "center", height: "80%" }}></Quadro>
+            <Quadro bgImage={QUADRO5} baloes={[FALASQUADRO5]} balaoStyle={{marginLeft: "45%", maxWidth: "600px", height: "250px" }}></Quadro>
+            <div className="corredor-container">
+            <img src={FUNDOQUADRO5} alt="Corredor" className="corredor-img" />
+            <Porta id='porta5' label='Corredor' onClick={() => mudarCena("corredor")} />
+            </div>
             </motion.div>)}
            
 
