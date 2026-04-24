@@ -17,7 +17,7 @@ import Modal from "./Modal";
 import OficinaJogos from "./cenas/OficinaJogos";
 import OficinaDesign from "./cenas/OficinaDesign";
 import OficinaProgramacao from "./cenas/OficinaProg";
-
+import OficinaAudiovisual from "./cenas/OficinaAudiovisual";
 
 const cenaAnim = {
   initial: { opacity: 0, x: 80 },
@@ -108,6 +108,16 @@ function App() {
     cenaAnim={cenaAnim} 
   />
 )}
+
+{cena.includes("audiovisual") && (
+  <OficinaAudiovisual
+    cena={cena}
+    setCena={setCena}
+    setComputadorAberto={setComputadorAberto}
+    cenaAnim={cenaAnim}
+  />
+)}
+
 
 
       </AnimatePresence>

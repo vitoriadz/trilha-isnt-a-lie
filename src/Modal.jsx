@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import MiniGameJogos from "./minijogos/MiniGameJogos"; 
 import MiniGameDesign from "./minijogos/MiniGameDesign";
 import MiniGameProgramacao from "./minijogos/MiniGameProgramacao";
+import MiniGameAudiovisual from "./minijogos/MiniGameAudiovisual";
 
 const Modal = ({ isOpen, onClose, onWin, cena }) => {
   if (!isOpen) return null;
@@ -25,7 +26,7 @@ const Modal = ({ isOpen, onClose, onWin, cena }) => {
       case "programacao":
         return "EVE_DEV_ENV // DRAW_MODULE";
       case "audiovisual":
-        return "VIDEO_EDITOR // TIMELINE_MODULE";
+        return "THEO_CAM // EXPOSURE_LAB";
       default:
         return "SYSTEM";
     }
@@ -40,7 +41,7 @@ const Modal = ({ isOpen, onClose, onWin, cena }) => {
       case "programacao":
         return <MiniGameProgramacao onWin={onWin} />;
       case "audiovisual":
-        return <div>MiniGame Audiovisual</div>; 
+        return <MiniGameAudiovisual onWin={onWin}/>;
       default:
         return null;
     }
