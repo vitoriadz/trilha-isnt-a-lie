@@ -41,43 +41,70 @@ const cenaAnim = {
 function App() {
   const [cena, setCena] = useState("introducao");
   const [computadorAberto, setComputadorAberto] = useState(false);
-  const [somAtivo, setSomAtivo] = useState(true);
+  
+  // ESTADOS DE SOM SEPARADOS
+  const [musicaAtiva, setMusicaAtiva] = useState(true);
+  const [efeitosAtivos, setEfeitosAtivos] = useState(true);
 
   const musicaRef = useRef(null);
   const somPorta = useRef(null);
-  const musicaFundo = useRef(null);
 
- const tocarSom = () => {
-    if (somAtivo && somPorta.current) {
+  // Função para sons de interface (Click)
+  const tocarSom = () => {
+    if (efeitosAtivos && somPorta.current) {
       somPorta.current.currentTime = 0;
       somPorta.current.play().catch(() => {});
     }
   };
 
   const mudarCena = (novaCena) => {
-    tocarSom();
+    tocarSom(); // Toca o efeito se efeitosAtivos for true
     setCena(novaCena);
   };
 
+  // Efeito para gerenciar a Música de Fundo
   useEffect(() => {
     if (musicaRef.current) {
-      musicaRef.current.volume = 0.4; // Volume em 40% para não abafar os cliques
-      if (somAtivo) {
-        musicaRef.current.play().catch(() => {
-          console.log("O navegador bloqueou o autoplay. O som tocará após o primeiro clique.");
-        });
+      musicaRef.current.volume = 0.4;
+
+      if (musicaAtiva) {
+        const playPromise = musicaRef.current.play();
+
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Se o navegador bloquear, toca no primeiro clique na tela
+            const iniciarAoInteragir = () => {
+              if (musicaAtiva) musicaRef.current.play();
+              window.removeEventListener("click", iniciarAoInteragir);
+            };
+            window.addEventListener("click", iniciarAoInteragir);
+          });
+        }
       } else {
         musicaRef.current.pause();
       }
     }
-  }, [somAtivo]);
+  }, [musicaAtiva]);
 
   return (
     <div className="game-wrapper">
-      {/* BOTÃO FIXO: SOM */}
-      <button className="button-geral btn-som" onClick={() => setSomAtivo(!somAtivo)}>
-        {somAtivo ? "🔊 ON" : "🔈 OFF"}
-      </button>
+      
+      {/* BOTÕES DE CONTROLE NO TOPO */}
+      <div className="controles-audio">
+        <button 
+          className="button-geral btn-som" 
+          onClick={() => setMusicaAtiva(!musicaAtiva)}
+        >
+          {musicaAtiva ? "🎵 Música: ON" : "🔇 Música: OFF"}
+        </button>
+        
+        <button 
+          className="button-geral btn-som" 
+          onClick={() => setEfeitosAtivos(!efeitosAtivos)}
+        >
+          {efeitosAtivos ? "🖱️ Efeitos: ON" : "🖱️ Efeitos: OFF"}
+        </button>
+      </div>
 
       <AnimatePresence mode="wait">
         

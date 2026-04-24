@@ -1,6 +1,6 @@
   import { motion } from "framer-motion";
   import Quadro from "../Quadro";
-  import fundo from '../assets/intro/HALL.png'
+  import fundo from '../assets/labjogos.jpeg'
   import '../styles/ofc-jogos.css';
 
   export default function OficinaJogos({ cena, setCena, setComputadorAberto, cenaAnim }) {
@@ -8,7 +8,6 @@
       <motion.div key="jogos" {...cenaAnim} className="story-container">
         {cena === "oficina_jogos" && (
           <>
-            <Quadro bgImage={fundo}><h2>Lab de Jogos</h2></Quadro>
             <Quadro bgImage={fundo}>
               <button className="button-geral" onClick={() => setComputadorAberto(true)}>Jogar</button>
               <button className="button-geral" onClick={() => setCena("corredor")}>Voltar</button>

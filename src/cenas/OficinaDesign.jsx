@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Quadro from "../Quadro";
-import fundo from '../assets/intro/HALL.png'
+import fundo from '../assets/atelie.jpeg'
 import '../styles/ofc-design.css';
 
 const cenaAnimDefault = {
@@ -18,13 +18,6 @@ export default function OficinaDesign({ cena, setCena, setPapelAberto, cenaAnimP
       {cena === "oficina_design" && (
         <> 
           <Quadro bgImage={fundo}>
-            <h2>Luan: "E aí, bixo! Pronto para colocar a mão na massa? Design não é só tela brilhante, é pensamento!"</h2>
-          </Quadro>
-          <Quadro bgImage={fundo}>
-            <h2>"A missão é criar um protótipo de baixa fidelidade para um app do RU. O usuário quer saber o cardápio de hoje."</h2>
-          </Quadro>
-          <Quadro bgImage={fundo}>
-            <h2>"Vamos esboçar a tela. Como organizaríamos essas informações?"</h2>
             <div className="botoes-container">
               <button className="button-geral" onClick={() => setPapelAberto(true)}>
                 Pegar Papel e Lápis

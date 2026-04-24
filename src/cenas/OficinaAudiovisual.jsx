@@ -1,6 +1,6 @@
- import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Quadro from "../Quadro";
-import fundo from "../assets/imagemexemplo.png";
+import fundo from "../assets/intro/HALL.png";
 import '../styles/ofc-audiovisual.css';
 
 export default function OficinaAudiovisual({ cena, setCena, setComputadorAberto, cenaAnim }) {
@@ -11,26 +11,6 @@ export default function OficinaAudiovisual({ cena, setCena, setComputadorAberto,
       {cena === "oficina_audiovisual" && (
         <>
           <Quadro bgImage={fundo}>
-            <h2>Theo: "Ah, boa. Chega mais."</h2>
-          </Quadro>
-
-          <Quadro bgImage={fundo}>
-            <h2>"Sou o Theo, trilha de Audiovisual."</h2>
-          </Quadro>
-
-          <Quadro bgImage={fundo}>
-            <h2>"A gente transforma o jeito que as pessoas enxergam o mundo."</h2>
-          </Quadro>
-
-          <Quadro bgImage={fundo}>
-            <h2>"Hoje você vai colocar a mão nisso aqui."</h2>
-          </Quadro>
-
-          <Quadro bgImage={fundo}>
-            <h2>
-              "A câmera tá no modo manual... vamos mexer na velocidade do obturador."
-            </h2>
-
             <div className="botoes-container">
               <button 
                 className="button-geral"
