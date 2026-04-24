@@ -10,25 +10,8 @@ export default function OficinaProgramacao({ cena, setCena, setComputadorAberto,
       {/* ENTRADA NA OFICINA */}
       {cena === "oficina_programacao" && (
         <>
-          <Quadro bgImage={fundo}>
-            <h2>Eve: "Olha só, que bom te ver nessa oficina..."</h2>
-          </Quadro>
 
           <Quadro bgImage={fundo}>
-            <h2>"É sempre bom ver uma garota interessada na área da programação!"</h2>
-          </Quadro>
-
-          <Quadro bgImage={fundo}>
-            <h2>"Já que você foi a última que chegou, vamos ser uma dupla."</h2>
-          </Quadro>
-
-          <Quadro bgImage={fundo}>
-            <h2>"Aqui no SMD, código também é criatividade..."</h2>
-          </Quadro>
-
-          <Quadro bgImage={fundo}>
-            <h2>"Então… espero que goste de desenhar usando código!"</h2>
-
             <div className="botoes-container">
               <button 
                 className="button-geral"
