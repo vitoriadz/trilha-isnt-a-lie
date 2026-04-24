@@ -2,10 +2,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 // SVGs
-import kirbyBase from "../assets/Kirby_NoCircle.svg";
-import kirbySemCor from "../assets/Kirby_NoFill.svg";
-import kirbyColorido from "../assets/Kirby_Finale.svg";
-import kirbyColorOverlay from "../assets/kirbyArms.svg";
+import kirbyBase from "../assets/minigameprog/Kirby_NoCircle.svg";
+import kirbySemCor from "../assets/minigameprog/Kirby_NoFill.svg";
+import kirbyColorido from "../assets/minigameprog/Kirby_Finale.svg";
 
 export default function MiniGameProgramacao({ onWin }) {
   const [fase, setFase] = useState(1);

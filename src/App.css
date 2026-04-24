@@ -15,7 +15,7 @@ body {
 .button-geral {
   margin-top: 20px;
   padding: 12px 25px;
-  background: #646cff;
+  background: #eda200;
   border: none;
   color: white;
   cursor: pointer;
@@ -24,7 +24,7 @@ body {
 }
 
 .button-geral:hover {
-  background: #4c52d4;
+  background: #c07900;
   transform: scale(1.05);
 } 
 

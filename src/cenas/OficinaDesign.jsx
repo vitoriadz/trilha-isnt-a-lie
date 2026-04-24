@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Quadro from "../Quadro";
-import fundo from "../assets/imagemexemplo.png"; // Verifique se o caminho está correto
+import fundo from '../assets/intro/HALL.png'
 import '../styles/ofc-design.css';
 
 const cenaAnimDefault = {

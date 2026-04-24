@@ -1,6 +1,6 @@
   import { motion } from "framer-motion";
   import Quadro from "../Quadro";
-  import fundo from "../assets/imagemexemplo.png";
+  import fundo from '../assets/intro/HALL.png'
   import '../styles/ofc-jogos.css';
 
   export default function OficinaJogos({ cena, setCena, setComputadorAberto, cenaAnim }) {
