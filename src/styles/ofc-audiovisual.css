@@ -1,0 +1,37 @@
+.camera-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.camera-view {
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border: 2px solid #00ffcc;
+}
+
+.camera-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider-label {
+  color: #00ffcc;
+}
+
+input[type="range"] {
+  width: 200px;
+}
+
+.terminal {
+  color: #aaa;
+}

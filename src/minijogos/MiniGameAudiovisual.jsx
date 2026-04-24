@@ -1,0 +1,93 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import cameraImg from "../assets/xicara.jpg";
+
+export default function MiniGameAudiovisual({ onWin }) {
+  const [valor, setValor] = useState(0);
+  const [mensagem, setMensagem] = useState(
+    "Theo: 'Testa os valores e depois confirma o melhor.'"
+  );
+  const [ganhou, setGanhou] = useState(false);
+
+  function getEstiloImagem() {
+    switch (valor) {
+      case 0:
+        return { filter: "brightness(1.8) blur(4px)" };
+
+      case 1:
+        return { filter: "brightness(1) blur(0px)" };
+
+      case 2:
+        return { filter: "brightness(0.6) contrast(1.2)" };
+
+      case 3:
+        return { filter: "brightness(0.3)" };
+
+      default:
+        return {};
+    }
+  }
+
+  function verificarResposta() {
+    if (valor === 1) {
+      setMensagem("Theo: 'Perfeito! Exposição equilibrada.'");
+      setGanhou(true);
+
+      setTimeout(() => {
+        onWin();
+      }, 1500);
+    } else {
+      setMensagem("Theo: 'Hmm... acho que não é bem assim não 🤔'");
+    }
+  }
+
+  return (
+    <div className="camera-container">
+
+      
+      <div className="camera-view">
+        <motion.img
+          src={cameraImg}
+          className="camera-image"
+          animate={getEstiloImagem()}
+          transition={{ duration: 0.3 }}
+        />
+      </div>
+
+
+      <div className="slider-container">
+        <span>1/30</span>
+
+        <input
+          type="range"
+          min="0"
+          max="3"
+          step="1"
+          value={valor}
+          onChange={(e) => setValor(Number(e.target.value))}
+        />
+
+        <span>1/1000</span>
+      </div>
+
+  
+      <div className="slider-label">
+        {["1/30", "1/125", "1/500", "1/1000"][valor]}
+      </div>
+
+      <button
+        className="btn-run"
+        onClick={verificarResposta}
+        disabled={ganhou}
+      >
+        {ganhou ? "✔ Ajuste correto" : "Confirmar ajuste"}
+      </button>
+
+
+      <div className="terminal">
+        <p>{mensagem}</p>
+      </div>
+
+    </div>
+  );
+}

@@ -8,7 +8,7 @@
 .options-panel {
   margin-top: 15px;
   display: flex;
-  gap: 10px;
+  gap: 20%;
   flex-wrap: wrap;
 }
 
@@ -20,8 +20,8 @@
 
 .options-panel button {
   background: #222;
-  color: #00ffcc;
-  border: 1px solid #00ffcc;
+  color: pink;
+  border: 1px solid pink;
   padding: 6px 10px;
   cursor: pointer;
   transition: 0.2s;
@@ -32,7 +32,46 @@
   color: #000;
 }
 
-.kirby-img {
+/* .kirby-img {
   width: 160px;
   height: auto;
+} */
+
+.kirby-preview {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: auto;
+}
+
+/* CORPO */
+.kirby-body {
+  position: absolute;
+  width: 136px;
+  height: 130px;
+  border-radius: 50%;
+  border: 2px solid black;
+
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+}
+
+/* IMAGEM POR CIMA */
+.kirby-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none; /* importante */
+}
+
+.kirby-overlay {
+  transition: opacity 0.2s ease;
+}
+
+.game-preview-box {
+  background-color: #fff;
 }
