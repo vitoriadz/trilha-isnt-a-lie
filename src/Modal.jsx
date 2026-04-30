@@ -20,7 +20,7 @@ const Modal = ({ isOpen, onClose, onWin, cena }) => {
   function renderTitulo() {
     switch (tipo) {
       case "jogos":
-        return "PROJECT_IARA_OS // PHYSICS_MODULE";
+        return "PROJECT_IARA // PHYSICS_MODULE";
       case "design":
         return "LUAN_SKETCH // LOW_FI_PROTOTYPE";
       case "programacao":

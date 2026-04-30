@@ -38,18 +38,16 @@ const Quadro = ({ children, bgImage, baloes = [], balaoStyle }) => {
   });
 
   const bgY = useTransform(smoothProgress, [0, 1], ["-10%", "10%"]);
-  const contentY = useTransform(smoothProgress, [0, 0.4, 0.6, 1], [200, 0, 0, -200]);
-  const contentOpacity = useTransform(smoothProgress, [0, 0.35, 0.65, 1], [0, 1, 1, 0]);
+  const isArrayStyle = Array.isArray(balaoStyle);
+  const containerStyle = isArrayStyle ? {} : balaoStyle;
 
- return (
+  return (
     <motion.section ref={ref} className="quadro">
-      {/* FUNDO PARALLAX */}
       <motion.div
         className="bg-parallax"
         style={{ y: bgY, backgroundImage: `url(${bgImage})`, zIndex: 1 }}
       />
 
-      {/* CONTAINER DOS BALÕES */}
       <motion.div 
         className="container-baloes-horizontal"
         variants={containerAnim}
@@ -62,7 +60,7 @@ const Quadro = ({ children, bgImage, baloes = [], balaoStyle }) => {
           gap: "0px",          
           zIndex: 10, 
           position: "relative",
-          ...balaoStyle 
+          ...containerStyle // Estilo do container
         }}
       >
         {baloes.map((imgBalao, index) => (
@@ -71,7 +69,13 @@ const Quadro = ({ children, bgImage, baloes = [], balaoStyle }) => {
             src={imgBalao} 
             variants={itemAnim}
             className="img-balao"
-            style={{ width: "auto", maxHeight: isMobile ? "45%" : "80%", margin: "-30px"}} 
+            style={{ 
+              width: "auto", 
+              maxHeight: isMobile ? "45%" : "80%", 
+              margin: "-30px",
+              // APLICA ESTILO INDIVIDUAL SE FOR ARRAY
+              ...(isArrayStyle ? balaoStyle[index] : {}) 
+            }} 
           />
         ))}
 
