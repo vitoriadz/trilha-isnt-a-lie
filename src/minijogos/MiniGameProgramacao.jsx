@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import kirbyBase from "../assets/minigameprog/Kirby_NoCircle.svg";
 import kirbySemCor from "../assets/minigameprog/Kirby_NoFill.svg";
 import kirbyColorido from "../assets/minigameprog/Kirby_Finale.svg";
+import kirbyColorOverlay from "../assets/minigameprog/kirbyArms.svg";
+
 
 export default function MiniGameProgramacao({ onWin }) {
   const [fase, setFase] = useState(1);
@@ -20,9 +22,9 @@ export default function MiniGameProgramacao({ onWin }) {
     if (opcao === "circle") {
       setForma("circle");
       setFase(2);
-      setMensagem("Eve: 'Boa! Agora precisamos pintar ele...'");
+      setMensagem("Boa! Agora precisamos pintar ele");
     } else {
-      setMensagem("Eve: 'Hmm... Kirby não tem esse formato 🤔'");
+      setMensagem("O Kirby não tem esse formato 🤔'");
     }
   }
 
@@ -37,13 +39,13 @@ export default function MiniGameProgramacao({ onWin }) {
   function escolherCor(opcao) {
     if (opcao === "pink") {
       setCor("pink");
-      setMensagem("Eve: 'PERFEITO! Kirby completinho 💖'");
+      setMensagem("Eve: 'PERFEITO!");
 
       setTimeout(() => {
         onWin();
       }, 1500);
     } else {
-      setMensagem("Eve: 'Essa cor não parece muito Kirby...'");
+      setMensagem("Essa cor não parece muito Kirby...");
     }
   }
 
