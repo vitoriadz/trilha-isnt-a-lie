@@ -11,7 +11,7 @@ import QUADRO1 from './assets/intro/QUADRO1.png';
 import QUADRO2 from './assets/intro/QUADRO2.png';
 import QUADRO3 from './assets/intro/QUADRO3.png';
 import QUADRO5 from './assets/intro/QUADRO5.png';
-import FUNDOQUADRO5 from './assets/intro/fUNDOQUADRO5.png';
+import FUNDOQUADRO5 from './assets/intro/FUNDOQUADRO5.png';
 import HALL from './assets/intro/HALL.png'
 import EVE from './assets/intro/EVE.png';
 import LUAN from './assets/intro/LUAN.png';
