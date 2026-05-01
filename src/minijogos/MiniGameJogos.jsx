@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import OFICINAFALA1 from '../assets/jogos/FALAOFICINA.png'
+
+
 const MiniGameJogos = ({ onWin }) => {
   const canvasRef = useRef(null);
   const [jumpForce, setJumpForce] = useState(6);
@@ -10,13 +13,25 @@ const MiniGameJogos = ({ onWin }) => {
   const [rodando, setRodando] = useState(false);
   const [ultimaConfig, setUltimaConfig] = useState({ jumpForce: null, moveSpeed: null });
 
+  // ESTADO PARA O BALÃO
+  const [mostrarBalao, setMostrarBalao] = useState(true);
+
   function getDica() {
-    if (jumpForce < 8) return "IARA: 'Tá pulando muito fraco... aumenta um pouco.'";
-    if (jumpForce > 17) return "IARA: 'Isso tá mais pra foguete 🤨 diminui um pouco.'";
-    if (moveSpeed < 2) return "IARA: 'Sem velocidade não atravessa.'";
-    if (moveSpeed > 6) return "IARA: 'Rápido demais. Você perde controle.'";
-    return "IARA: 'Tá perto... ajusta um pouco.'";
+    if (jumpForce < 8) return "Tá pulando muito fraco... aumenta um pouco.";
+    if (jumpForce > 17) return "Isso tá mais pra foguete 🤨 diminui um pouco.";
+    if (moveSpeed < 2) return "Sem velocidade não atravessa.";
+    if (moveSpeed > 6) return "Rápido demais. Você perde controle.";
+    return "Tá perto... ajusta um pouco.";
   }
+
+  // TEMPO DE DURAÇÃO DO BALÃO
+   useEffect(() => {
+      const timer = setTimeout(() => {
+        setMostrarBalao(false);
+      }, 4000); 
+  
+      return () => clearTimeout(timer); 
+    }, []);
 
   useEffect(() => {
     if (!rodando) return;
@@ -111,7 +126,35 @@ const MiniGameJogos = ({ onWin }) => {
   }, [rodando]);
 
   return (
+
+    
     <div className="editor-container">
+
+      <AnimatePresence>
+        {mostrarBalao && (
+          <>
+            {/* Overlay para fechar ao clicar fora ou apenas para foco */}
+            <div 
+              style={{ position: 'absolute', inset: 0, zIndex: 10, cursor: 'pointer' }} 
+              onClick={() => setMostrarBalao(false)} 
+            />
+
+            {/* BALÃO 1 - Topo Direita */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5, x: 50 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              transition={{ delay: 0.2 }}
+              className="balao-fora balao-top-right"
+              style={{ position: 'absolute', top: '10%', right: '15%', zIndex: 11 }}
+            >
+              <img src={OFICINAFALA1} alt="Dica 1" style={{ width: "350px" }} />
+            </motion.div>
+        
+          </>
+        )}
+      </AnimatePresence>
+
       {/* SEÇÃO DE CÓDIGO */}
       <div className="codigo-section">
         <div className="line-numbers">

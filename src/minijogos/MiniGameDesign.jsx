@@ -22,6 +22,7 @@ export default function MiniGameDesign({ onWin }) {
   const [progresso, setProgresso] = useState(0);
   const [ganhou, setGanhou] = useState(false);
 
+  // TEMPO DE DURAÇÃO DO BALÃO
   useEffect(() => {
     const timer = setTimeout(() => {
       setMostrarBalao(false);
@@ -29,6 +30,7 @@ export default function MiniGameDesign({ onWin }) {
 
     return () => clearTimeout(timer); 
   }, []);
+  
 
   useEffect(() => {
     let acertos = 0;
