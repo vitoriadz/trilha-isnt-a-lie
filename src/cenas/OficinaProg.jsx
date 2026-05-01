@@ -52,14 +52,14 @@ export default function OficinaProgramacao({ cena, setCena, setComputadorAberto,
                 className="button-geral"
                 onClick={() => setCena("final_ru")}
               >
-                Ir com Eve
+                Bora pro RU!
               </button>
 
               <button 
                 className="button-geral"
                 onClick={() => setCena("corredor")}
               >
-                Explorar mais
+                 Obrigada pelo convite, mas ainda quero ver mais labs.
               </button>
             </div>
           </Quadro>

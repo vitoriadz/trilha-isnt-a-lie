@@ -1,12 +1,14 @@
+
+
 .folha-prototipo {
   background: #fdfdfd;
-  background-image: radial-gradient(#e5e5e5 1px, transparent 1px); /* Pontilhado de caderno */
+  background-image: radial-gradient(#e5e5e5 1px, transparent 1px); 
   background-size: 20px 20px;
   padding: 30px;
   border-radius: 4px;
   box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
   min-height: 400px;
-  font-family: 'Comic Sans MS', 'Indie Flower', cursive; /* Fonte que parece escrita à mão */
+  font-family: 'Comic Sans MS', 'Indie Flower', cursive; 
   color: #2d3436;
 }
 
@@ -80,6 +82,7 @@
 .item-content {
   display: flex;
   align-items: center;
+  text-align: left;
   width: 100%;
 }
 
@@ -124,3 +127,7 @@
   top: -60px;
   left: -80px; /* Joga para cima e esquerda */
 }
+
+
+
+

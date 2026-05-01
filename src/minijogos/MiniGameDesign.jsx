@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Reorder, motion, AnimatePresence } from "framer-motion";
 import '../styles/ofc-design.css';
 
-// Exemplo de importação do balão
-import BALAO_DICA from '../assets/design/CENA4QUADRO1.png';
+import OFICINAFALA1 from '../assets/design/OFICINA_FALA1.png'
+import OFICINAFALA2 from '../assets/design/OFICINA_FALA2.png'
+import OFICINAFALA3 from '../assets/design/OFICINA_FALA3.png'
 
 export default function MiniGameDesign({ onWin }) {
   const ordemCorreta = ["title", "desc", "price", "icon"];
@@ -24,7 +25,7 @@ export default function MiniGameDesign({ onWin }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setMostrarBalao(false);
-    }, 5000); 
+    }, 8000); 
 
     return () => clearTimeout(timer); 
   }, []);
@@ -39,7 +40,7 @@ export default function MiniGameDesign({ onWin }) {
 
     if (acertos === ordemCorreta.length && !ganhou) {
       setGanhou(true);
-      setTimeout(onWin, 1500);
+      setTimeout(onWin, 2000);
     }
   }, [itens]);
 
@@ -57,7 +58,7 @@ export default function MiniGameDesign({ onWin }) {
               transition={{ delay: 0.2 }}
               className="balao-fora balao-top-right"
             >
-              <img src={BALAO_DICA} alt="Dica" style={{ width: "200px" }} />
+              <img src={OFICINAFALA1} alt="Dica" style={{ width: "300px" }} />
             </motion.div>
 
             {/* BALÃO 2 */}
@@ -68,7 +69,7 @@ export default function MiniGameDesign({ onWin }) {
               transition={{ delay: 0.6 }}
               className="balao-fora balao-bottom-left"
             >
-              <img src={BALAO_DICA} alt="Dica" style={{ width: "200px" }} />
+              <img src={OFICINAFALA3} alt="Dica" style={{ width: "300px" }} />
             </motion.div>
 
             {/* BALÃO 3 */}
@@ -79,16 +80,13 @@ export default function MiniGameDesign({ onWin }) {
               transition={{ delay: 1.0 }}
               className="balao-fora balao-top-left"
             >
-              <img src={BALAO_DICA} alt="Dica" style={{ width: "200px" }} />
+              <img src={OFICINAFALA2} alt="Dica" style={{ width: "300px" }} />
             </motion.div>
           </>
         )}
       </AnimatePresence>
 
       <div className="header-game">
-        <p className="instrucao-luan">
-          Luan: "A hierarquia visual guia o olhar. Ordene do mais importante para o menos importante!"
-        </p>
         
         <div className="barra-progresso-container">
           <motion.div 

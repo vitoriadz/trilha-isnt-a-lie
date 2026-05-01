@@ -20,8 +20,8 @@
             <Quadro bgImage={fundo}><h2>IARA: "Nada mal... você manda bem."</h2></Quadro>
             <Quadro bgImage={fundo}>
               <div className="decisao-botoes">
-                  <button className="button-geral" onClick={() => setCena("final_ru")}>Ir com Iara</button>
-                  <button className="button-geral" onClick={() => setCena("corredor")}>Explorar mais</button>
+                  <button className="button-geral" onClick={() => setCena("final_ru")}>Bora pro RU!</button>
+                  <button className="button-geral" onClick={() => setCena("corredor")}>Obrigada pelo convite, mas ainda quero ver mais labs.</button>
               </div>
             </Quadro>
           </>
