@@ -3,13 +3,15 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
+background-color: #ff8000;
+  
 }
 
 .camera-view {
   width: 300px;
   height: 200px;
   overflow: hidden;
-  border: 2px solid #00ffcc;
+  border: 2px solid #ff8000;
 }
 
 .camera-image {
@@ -25,7 +27,7 @@
 }
 
 .slider-label {
-  color: #00ffcc;
+  color: #000000;
 }
 
 input[type="range"] {
@@ -33,5 +35,40 @@ input[type="range"] {
 }
 
 .terminal {
-  color: #aaa;
+  color: white;
+}
+
+.balao-oficina {
+  position: absolute;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.balao-oficina img {
+  width: 350px;
+  height: auto;
+}
+
+.balao-top-right {
+  top: 30%;
+  right: 65%;
+}
+
+.balao-bottom-left {
+  top: 30%;
+  left: 65%;
+}
+
+.btn-run {
+
+  margin: 20px;
+  padding: 12px 25px;
+  font-family: 'Comic Sans MS', 'Indie Flower', 'Chalkboard SE', cursive; 
+  background: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  border: 4px solid #0a0a0a;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
 }
