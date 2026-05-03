@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import MiniGameJogos from "./minijogos/MiniGameJogos"; 
+import MiniGameJogos from "./minijogos/MiniGameJogos";
 import MiniGameDesign from "./minijogos/MiniGameDesign";
 import MiniGameProgramacao from "./minijogos/MiniGameProgramacao";
 import MiniGameAudiovisual from "./minijogos/MiniGameAudiovisual";
@@ -41,41 +41,45 @@ const Modal = ({ isOpen, onClose, onWin, cena }) => {
       case "programacao":
         return <MiniGameProgramacao onWin={onWin} />;
       case "audiovisual":
-        return <MiniGameAudiovisual onWin={onWin}/>;
+        return <MiniGameAudiovisual onWin={onWin} />;
       default:
         return null;
     }
   }
 
   return (
-    <motion.div 
-      className="overlay-pc" 
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }} 
+    <motion.div
+      className="overlay-pc"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <motion.div 
+      <motion.div
         className={tipo === "design" ? "folha-papel" : "janela-pc"}
         initial={{ scale: 0.8, y: 50 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.8, y: 50 }}
       >
-        <div className="janela-header">
-          <div className="dots">
-            <div className="dot red"></div>
-            <div className="dot yellow"></div>
-            <div className="dot green"></div>
-          </div>
+        <div className={`janela-header ${tipo === "audiovisual" ? "only-close" : ""}`}>
+          {tipo !== "audiovisual" && (
+            <>
+              <div className="dots">
+                <div className="dot red"></div>
+                <div className="dot yellow"></div>
+                <div className="dot green"></div>
+              </div>
 
-          <span className="window-title">
-            {renderTitulo()}
-          </span>
+              <span className="window-title">
+                {renderTitulo()}
+              </span>
+            </>
+          )}
 
           <button className="btn-close-x" onClick={onClose}>✕</button>
         </div>
 
         {renderMiniGame()}
-        
+
       </motion.div>
     </motion.div>
   );
