@@ -17,7 +17,7 @@ export default function MiniGameAudiovisual({ onWin }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setMostrarBaloes(false);
-    }, 15000);
+    }, 10000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -43,14 +43,14 @@ export default function MiniGameAudiovisual({ onWin }) {
 
   function verificarResposta() {
     if (valor === 1) {
-      setMensagem("Theo: 'Perfeito! Exposição equilibrada.'");
+      setMensagem("Perfeito! Exposição equilibrada.");
       setGanhou(true);
 
       setTimeout(() => {
         onWin();
       }, 1500);
     } else {
-      setMensagem("Theo: 'Hmm... acho que não é bem assim não 🤔'");
+      setMensagem("Hmm... acho que não é bem assim não");
     }
   }
 

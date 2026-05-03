@@ -105,14 +105,14 @@ export default function OficinaAudiovisual({ cena, setCena, setComputadorAberto,
                 className="button-geral"
                 onClick={() => setComputadorAberto(true)}
               >
-                Usar câmera
+                Que legal! Vamos nessa.
               </button>
 
               <button
                 className="button-geral btn-back"
                 onClick={() => setCena("corredor")}
               >
-                Voltar
+                Humm... acho que vou olhar outras oficinas antes.
               </button>
             </div>
           </Quadro>
@@ -205,7 +205,7 @@ export default function OficinaAudiovisual({ cena, setCena, setComputadorAberto,
                 className="button-geral"
                 onClick={() => setCena("corredor")}
               >
-                Quero explorar mais
+                Obrigada pelo convite, mas ainda quero ver mais labs.
               </button>
 
             </div>
