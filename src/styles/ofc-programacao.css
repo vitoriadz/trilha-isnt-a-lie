@@ -28,14 +28,9 @@
 }
 
 .options-panel button:hover {
-  background: #00ffcc;
+  background: #00aeff;
   color: #000;
 }
-
-/* .kirby-img {
-  width: 160px;
-  height: auto;
-} */
 
 .kirby-preview {
   position: relative;
@@ -74,4 +69,20 @@
 
 .game-preview-box {
   background-color: #fff;
+}
+
+.balao-oficina {
+  position: absolute;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.balao-oficina img {
+  width: 350px;
+  height: auto;
+}
+
+.balao-programacao {
+  top: 5%;
+  left: 15%;
 }
