@@ -3,8 +3,8 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
-background-color: #ff8000;
-  
+  background-color: #ff8000;
+  width: 100%;
 }
 
 .camera-view {
@@ -34,9 +34,17 @@ input[type="range"] {
   width: 200px;
 }
 
-.terminal {
-  color: white;
+.terminal-audio {
+  width: 400px;
+  margin-top: 30px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  border-left: 3px solid #ffaa00;
 }
+
+.terminal-audio-text { color: #e6edf3; font-size: 13px; margin: 0; }
+.terminal-audio-sub { color: #8b949e; font-size: 11px; margin-top: 5px; }
 
 .balao-oficina {
   position: absolute;
@@ -59,8 +67,7 @@ input[type="range"] {
   left: 65%;
 }
 
-.btn-run {
-
+.btn-run-audio{
   margin: 20px;
   padding: 12px 25px;
   font-family: 'Comic Sans MS', 'Indie Flower', 'Chalkboard SE', cursive; 
@@ -71,4 +78,15 @@ input[type="range"] {
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
+}
+
+.btn-run-audio:hover:not(:disabled) {
+  background:  #ff8000;
+  transform: translateY(-2px);
+}
+
+.btn-run-audio:disabled {
+  background: #21262d;
+  color: #484f58;
+  cursor: not-allowed;
 }

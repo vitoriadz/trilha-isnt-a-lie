@@ -11,7 +11,7 @@ export default function MiniGameAudiovisual({ onWin }) {
   const [mostrarBaloes, setMostrarBaloes] = useState(true);
 
   const [mensagem, setMensagem] = useState(
-    "Theo: 'Testa os valores e depois confirma o melhor.'"
+    "'Testa os valores e confirma o melhor.'"
   );
 
   useEffect(() => {
@@ -114,14 +114,14 @@ export default function MiniGameAudiovisual({ onWin }) {
       </div>
 
       <button
-        className="btn-run"
+        className="btn-run-audio"
         onClick={verificarResposta}
         disabled={ganhou}
       >
         {ganhou ? "✔ Ajuste correto" : "Confirmar ajuste"}
       </button>
 
-      <div className="terminal">
+      <div className="terminal-audio">
         <p>{mensagem}</p>
       </div>
     </div>

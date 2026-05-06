@@ -24,7 +24,7 @@
   import CENA5FALA2 from '../assets/jogos/CENA5_FALA2.png';
   import CENA5FUNDO from '../assets/jogos/CENA5_FUNDO.png';
  
-
+  import IMAGEM_FINAL from '../assets/jogos/IMAGEM_FINAL.png';
 
   export default function OficinaJogos({ cena, setCena, setComputadorAberto, cenaAnim }) {
 
@@ -41,7 +41,7 @@
           <Quadro bgImage={CENA1FUNDO} baloes={[CENA1FALA]} balaoStyle={{marginLeft: "30%", marginTop:"5%", maxWidth: "400px", height: "300px"}} />
           <Quadro bgImage={CENA2FUNDO} baloes={[CENA2FALA1, CENA2FALA2]} balaoStyle={{ alignSelf: "flex-start", marginRight: "15%", marginTop:"5%", maxWidth: "400px", height: "280px", gap: "200px" }} />
           <Quadro bgImage={CENA3FUNDO} baloes={[CENA3FALA]} balaoStyle={{marginRight:"25%",alignSelf: "flex-start", marginTop: "5%", maxWidth: "400px", height: "350px" }} />
-          <Quadro bgImage={CENA3}>
+          <Quadro bgImage={CENA3FUNDO}>
             <div className="botoes-container">
               <button className="button-geral" onClick={() => setComputadorAberto(true)}>
                 Que legal! Vamos nessa.
@@ -57,11 +57,10 @@
         {cena === "oficina_jogos_final" && (
           <>
            <Quadro bgImage={CENA5FUNDO} baloes={[CENA5FALA1, CENA5FALA2]} balaoStyle={{alignSelf: "flex-start", marginLeft: "20%", maxWidth: "300px", height: "300px", gap: "250px" }} />
-            <Quadro bgImage={CENA5}>
-            <div className="overlay-final"></div>
+            <Quadro bgImage={CENA5FUNDO}>
 
             <div className="decisao-botoes">
-              <button className="button-geral" onClick={() => setCena("final_ru_luan")}>
+              <button className="button-geral" onClick={() => setCena("final_ru_jogos")}>
                 Bora pro RU!
               </button>
               <button className="button-geral" onClick={() => setCena("corredor")}>
@@ -69,6 +68,31 @@
               </button>
             </div> 
             </Quadro>
+          </>
+        )}
+
+        {cena === "final_ru_jogos" && (
+          <>
+           <Quadro bgImage="#000000">
+            <div className="decisao-botoes">
+              <button className="button-geral-text" onClick={() => setCena("ver_foto_jogos")}>
+                Você e a Iara vão juntos para o RU e conversam pelo caminho sobre jogos e coisas aleatórias do dia a dia, até que ela vai se aproximando aos poucos, puxando o assunto de um jeito mais pessoal e curioso, com um sorriso leve que muda o clima da conversa sem chamar muita atenção, e quando chegam ao RU ela aproveita um momento mais quieto para mostrar um jogo, dizendo que lembrou de você, mas o jeito como olha e sorri deixa claro que aquilo vai além do jogo, como se fosse só uma forma de continuar a conversa de um jeito mais próximo.
+              </button>
+              <button className="button-geral" onClick={() => setCena("ver_foto_jogos")}>
+                Ver Foto 
+                </button>
+            </div> 
+            </Quadro>
+          </>
+        )}
+
+        {cena === "ver_foto_jogos" && (
+          <>
+           <Quadro bgImage={IMAGEM_FINAL}>
+            </Quadro>
+             <button className="button-geral" onClick={() => setCena("introducao")}>
+                Recomeçar 
+                </button>
           </>
         )}
       </motion.div>

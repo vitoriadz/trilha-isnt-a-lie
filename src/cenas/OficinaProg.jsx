@@ -35,6 +35,8 @@ import CENA6FUNDO from '../assets/programacao/CENA6_FUNDO.png';
 import CENA6FALA from '../assets/programacao/CENA6_FALA.png';
 
 
+// import IMAGEM_FINAL from '../assets/programacao/IMAGEM_FINAL.png'
+
 export default function OficinaProgramacao({ cena, setCena, setComputadorAberto, cenaAnim }) {
 
   useEffect(() => {
@@ -151,7 +153,7 @@ export default function OficinaProgramacao({ cena, setCena, setComputadorAberto,
             <div className="decisao-botoes">
               <button
                 className="button-geral"
-                onClick={() => setCena("final_ru")}
+                onClick={() => setCena("final_ru_prog")}
               >
                 Bora pro RU!
               </button>
@@ -166,6 +168,31 @@ export default function OficinaProgramacao({ cena, setCena, setComputadorAberto,
           </Quadro>
         </>
       )}
+
+        {cena === "final_ru_prog" && (
+          <>
+           <Quadro bgImage="#000000">
+            <div className="decisao-botoes">
+              <button className="button-geral-text" onClick={() => setCena("ver_foto_prog")}>
+                Você e a Iara vão juntos para o RU e conversam pelo caminho sobre jogos e coisas aleatórias do dia a dia, até que ela vai se aproximando aos poucos, puxando o assunto de um jeito mais pessoal e curioso, com um sorriso leve que muda o clima da conversa sem chamar muita atenção, e quando chegam ao RU ela aproveita um momento mais quieto para mostrar um jogo, dizendo que lembrou de você, mas o jeito como olha e sorri deixa claro que aquilo vai além do jogo, como se fosse só uma forma de continuar a conversa de um jeito mais próximo.
+              </button>
+              <button className="button-geral" onClick={() => setCena("ver_foto_prog")}>
+                Ver Foto 
+                </button>
+            </div> 
+            </Quadro>
+          </>
+        )}
+
+        {cena === "ver_foto_prog" && (
+          <>
+           <Quadro bgImage={IMAGEM_FINAL}>
+            </Quadro>
+             <button className="button-geral" onClick={() => setCena("introducao")}>
+                Recomeçar 
+                </button>
+          </>
+        )}
 
     </motion.div>
   );

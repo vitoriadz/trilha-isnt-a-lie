@@ -45,7 +45,8 @@ const Quadro = ({ children, bgImage, baloes = [], balaoStyle }) => {
     <motion.section ref={ref} className="quadro">
       <motion.div
         className="bg-parallax"
-        style={{ y: bgY, backgroundImage: `url(${bgImage})`, zIndex: 1 }}
+        style={{ y: bgY, backgroundColor: bgImage?.startsWith('#') || bgImage?.startsWith('rgb') ? bgImage : 'transparent',
+    backgroundImage: bgImage?.startsWith('http') || bgImage?.includes('/') ? `url(${bgImage})` : 'none',  zIndex: 1 }}
       />
 
       <motion.div 

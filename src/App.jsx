@@ -120,7 +120,7 @@ function App() {
             <Quadro bgImage={HALL} baloes={[EVE, IARA, LUAN, THEO]} balaoStyle={{justifyContent: "center", height: "80%" }}></Quadro>
             <Quadro bgImage={QUADRO5} baloes={[FALASQUADRO5]} balaoStyle={{marginLeft: "45%", maxWidth: "600px", height: "250px" }}></Quadro>
             <div className="corredor-container">
-            <img src={FUNDOQUADRO5} alt="Corredor" className="corredor-img" />
+            <img src={HALL} alt="Corredor" className="corredor-img" />
             <Porta id='porta5' label='Corredor' onClick={() => mudarCena("corredor")} />
             </div>
             </motion.div>)}

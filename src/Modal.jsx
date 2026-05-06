@@ -22,7 +22,7 @@ const Modal = ({ isOpen, onClose, onWin, cena }) => {
       case "jogos":
         return "PROJECT_IARA // PHYSICS_MODULE";
       case "design":
-        return "LUAN_SKETCH // LOW_FI_PROTOTYPE";
+        return "LUAN_SKETCH // LOW_FI_PROT";
       case "programacao":
         return "EVE_DEV_ENV // DRAW_MODULE";
       case "audiovisual":

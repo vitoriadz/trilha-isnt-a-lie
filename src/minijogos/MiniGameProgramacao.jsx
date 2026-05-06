@@ -168,7 +168,7 @@ export default function MiniGameProgramacao({ onWin }) {
       <div className="jogo-section">
         <div className="preview-label">LIVE_PREVIEW</div>
 
-        <div className="game-preview-box">
+        <div className="game-preview-box-prog">
           <div className="kirby-preview">
 
             {/* CORPO */}

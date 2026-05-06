@@ -40,7 +40,7 @@ import CENA6FALA2 from '../assets/audiovisual/CENA6_FALA2.png';
 import CENA7FUNDO from '../assets/audiovisual/CENA7_fundo.png';
 import CENA7FALA from '../assets/audiovisual/CENA7_fala.png';
 
-
+import IMAGEM_FINAL from '../assets/audiovisual/IMAGEM_FINAL.png'
 
 
 export default function OficinaAudiovisual({ cena, setCena, setComputadorAberto, cenaAnim }) {
@@ -196,7 +196,7 @@ export default function OficinaAudiovisual({ cena, setCena, setComputadorAberto,
 
               <button
                 className="button-geral"
-                onClick={() => setCena("final_ru")}
+                onClick={() => setCena("final_ru_audiovisual")}
               >
                 Bora pro RU!
               </button>
@@ -212,6 +212,31 @@ export default function OficinaAudiovisual({ cena, setCena, setComputadorAberto,
           </Quadro>
         </>
       )}
+
+       {cena === "final_ru_audiovisual" && (
+          <>
+           <Quadro bgImage="#000000">
+            <div className="decisao-botoes">
+              <button className="button-geral-text" onClick={() => setCena("ver_foto_audiovisual")}>
+                Você e o Theo vão juntos para o RU e vão conversando pelo caminho sobre audiovisual, fotografia e como tudo pode mudar dependendo do enquadramento, com ele olhando o ambiente como se estivesse sempre buscando uma cena interessante, mas deixando a conversa leve e próxima, como se quisesse prolongar o caminho só mais um pouco. Já na fila do RU, ele entra na brincadeira e usa o bloco do Smd como “moldura”, levantando e ajustando as mãos ao redor dele como se estivesse testando diferentes enquadramentos na prática da oficina, mas mesmo mantendo o foco na técnica, ele deixa claro pelo jeito atento e pelo sorriso leve que aquilo também é uma forma de chamar atenção e prolongar a interação entre vocês.
+              </button>
+              <button className="button-geral" onClick={() => setCena("ver_foto_audiovisual")}>
+                Ver Foto 
+                </button>
+            </div> 
+            </Quadro>
+          </>
+        )}
+
+        {cena === "ver_foto_audiovisual" && (
+          <>
+           <Quadro bgImage={IMAGEM_FINAL}>
+            </Quadro>
+             <button className="button-geral" onClick={() => setCena("introducao")}>
+                Recomeçar 
+                </button>
+          </>
+        )}
 
     </motion.div>
   );
