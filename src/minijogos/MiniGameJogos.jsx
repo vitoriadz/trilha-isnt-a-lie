@@ -187,9 +187,9 @@ const MiniGameJogos = ({ onWin }) => {
           </div>
           <p>{'}'}</p>
           
-          <div className="terminal">
-            <p className="terminal-text">{mensagem}</p>
-            <p className="terminal-sub">Tentativas: {tentativas}</p>
+          <div className="terminal-jogos">
+            <p className="terminal-text-jogos">{mensagem}</p>
+            <p className="terminal-sub-jogos">Tentativas: {tentativas}</p>
           </div>
         </div>
       </div>

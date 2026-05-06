@@ -158,8 +158,8 @@ export default function MiniGameProgramacao({ onWin }) {
           )}
 
           {/* TERMINAL */}
-      <div className="terminal">
-        <p className="terminal-text">{mensagem}</p>
+      <div className="terminal-prog">
+        <p className="terminal-text-prog">{mensagem}</p>
       </div>
 
         </div>

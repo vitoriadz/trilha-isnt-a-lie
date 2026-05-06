@@ -25,6 +25,7 @@
   import CENA5FUNDO from '../assets/jogos/CENA5_FUNDO.png';
  
   import IMAGEM_FINAL from '../assets/jogos/IMAGEM_FINAL.png';
+  import CENA_ESCOLHAS from '../assets/jogos/CENA_ESCOLHAS.png';
 
   export default function OficinaJogos({ cena, setCena, setComputadorAberto, cenaAnim }) {
 
@@ -57,7 +58,7 @@
         {cena === "oficina_jogos_final" && (
           <>
            <Quadro bgImage={CENA5FUNDO} baloes={[CENA5FALA1, CENA5FALA2]} balaoStyle={{alignSelf: "flex-start", marginLeft: "20%", maxWidth: "300px", height: "300px", gap: "250px" }} />
-            <Quadro bgImage={CENA5FUNDO}>
+            <Quadro bgImage={CENA_ESCOLHAS}>
 
             <div className="decisao-botoes">
               <button className="button-geral" onClick={() => setCena("final_ru_jogos")}>
