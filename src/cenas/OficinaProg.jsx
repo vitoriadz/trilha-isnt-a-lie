@@ -35,14 +35,14 @@ import CENA6FUNDO from '../assets/programacao/CENA6_FUNDO.png';
 import CENA6FALA from '../assets/programacao/CENA6_FALA.png';
 
 
-// import IMAGEM_FINAL from '../assets/programacao/IMAGEM_FINAL.png'
+import IMAGEM_FINAL from '../assets/programacao/IMAGEM_FINAL.png'
 
 export default function OficinaProgramacao({ cena, setCena, setComputadorAberto, cenaAnim }) {
 
   useEffect(() => {
     if (cena === "oficina_programacao_final") {
       const timer = setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: "instant" });
       }, 150);
 
       return () => clearTimeout(timer);
@@ -119,6 +119,27 @@ export default function OficinaProgramacao({ cena, setCena, setComputadorAberto,
       {/* FINAL DA OFICINA */}
       {cena === "oficina_programacao_final" && (
         <>
+
+         <Quadro
+            bgImage={CENA4FUNDO}
+            baloes={[CENA4FALA1, CENA4FALA2]}
+            balaoStyle={[
+              {
+                marginLeft: "5%",
+                marginBottom: "15%",
+                maxWidth: "250px",
+                height: "300px"
+              },
+              {
+                marginLeft: "30%",
+                marginRight: "5%",
+                marginTop: "5%",
+                maxWidth: "200px",
+                height: "250px"
+              }
+            ]}
+          />
+
           <Quadro
             bgImage={CENA5FUNDO}
             baloes={[CENA5FALA1, CENA5FALA2]}
@@ -156,6 +177,7 @@ export default function OficinaProgramacao({ cena, setCena, setComputadorAberto,
                 onClick={() => setCena("final_ru_prog")}
               >
                 Bora pro RU!
+
               </button>
 
               <button
@@ -171,10 +193,10 @@ export default function OficinaProgramacao({ cena, setCena, setComputadorAberto,
 
         {cena === "final_ru_prog" && (
           <>
-           <Quadro bgImage="#000000">
+           <Quadro bgImage={CENA6FUNDO}>
             <div className="decisao-botoes">
               <button className="button-geral-text" onClick={() => setCena("ver_foto_prog")}>
-                Você e a Iara vão juntos para o RU e conversam pelo caminho sobre jogos e coisas aleatórias do dia a dia, até que ela vai se aproximando aos poucos, puxando o assunto de um jeito mais pessoal e curioso, com um sorriso leve que muda o clima da conversa sem chamar muita atenção, e quando chegam ao RU ela aproveita um momento mais quieto para mostrar um jogo, dizendo que lembrou de você, mas o jeito como olha e sorri deixa claro que aquilo vai além do jogo, como se fosse só uma forma de continuar a conversa de um jeito mais próximo.
+                Você acompanha a Eve até o RU enquanto ela vai explicando, entre risadas tímidas, como funcionam as filas, os horários e até quais pratos “valem o risco”. No caminho, a conversa começa falando sobre programação, desenhos feitos com código e jogos antigos, mas aos poucos ela vai ficando mais confortável perto de você, comentando coisas aleatórias do dia a dia e soltando piadas baixinho só pra te fazer rir. Quando chegam na entrada do RU, Eve estende a mão pra você com um sorriso envergonhado, como se aquele convite tivesse virado algo maior no meio do caminho, e naquele momento fica difícil dizer se ela só queria ajudar alguém da oficina… ou encontrar mais um motivo pra continuar perto de você.
               </button>
               <button className="button-geral" onClick={() => setCena("ver_foto_prog")}>
                 Ver Foto 
