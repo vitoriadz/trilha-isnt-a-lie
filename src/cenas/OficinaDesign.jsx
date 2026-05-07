@@ -50,7 +50,7 @@ import CENARIO from '../assets/design/CENARIO.png';
 import CENARIO2 from '../assets/design/CENARIO2.png';
 import CENARIO3 from '../assets/design/CENARIO3.png';
 
-//import IMAGEM_FINAL from '../assets/design/IMAGEM_FINAL.png'
+import IMAGEM_FINAL from '../assets/design/CENA_FINAL.png'
 
 const cenaAnimDefault = {
   initial: { opacity: 0, x: 80 },
@@ -116,7 +116,7 @@ export default function OficinaDesign({ cena, setCena, setPapelAberto, cenaAnimP
            <Quadro bgImage="#000000">
             <div className="decisao-botoes">
               <button className="button-geral-text" onClick={() => setCena("ver_foto_design")}>
-                Você e a Iara vão juntos para o RU e conversam pelo caminho sobre jogos e coisas aleatórias do dia a dia, até que ela vai se aproximando aos poucos, puxando o assunto de um jeito mais pessoal e curioso, com um sorriso leve que muda o clima da conversa sem chamar muita atenção, e quando chegam ao RU ela aproveita um momento mais quieto para mostrar um jogo, dizendo que lembrou de você, mas o jeito como olha e sorri deixa claro que aquilo vai além do jogo, como se fosse só uma forma de continuar a conversa de um jeito mais próximo.
+                Você segue com o Luan até o RU enquanto ele comenta, de um jeito descontraído, sobre como quase tudo ao redor foi pensado por alguém do design, desde a disposição das mesas até aplicativos que parecem “naturais” de usar. A conversa vai ficando cada vez mais leve, cheia de ideias aleatórias, referências visuais e pequenas observações que fazem vocês rirem sem perceber o tempo passar. Durante o almoço, entre um comentário e outro, Luan pega um caderninho e começa a rabiscar enquanto olha na sua direção de vez em quando, como se estivesse tentando registrar aquele momento do jeito que designers fazem quando algo chama atenção de verdade. Quando você percebe o desenho tomando forma, ele sorri e desvia o olhar por um instante, deixando claro que talvez o interesse dele já tenha ido muito além da oficina.
               </button>
               <button className="button-geral" onClick={() => setCena("ver_foto_design")}>
                 Ver Foto 
