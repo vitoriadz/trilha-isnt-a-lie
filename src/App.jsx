@@ -22,7 +22,7 @@ import FALA2QUADRO1 from './assets/intro/FALA2QUADRO1.png';
 import FALASQUADRO2 from './assets/intro/FALASQUADRO2.png';
 import FALASQUADRO3 from './assets/intro/FALASQUADRO3.png';
 import FALASQUADRO5 from './assets/intro/FALASQUADRO5.png';
-import imagemcorredor from './assets/imagemcorredor.jpeg';
+import imagemcorredor from './assets/corredor.png';
 import pegadas from './assets/pegadas.png';
 import click from "./sounds/click.mp3";
 import music from "./sounds/music.mp3";
