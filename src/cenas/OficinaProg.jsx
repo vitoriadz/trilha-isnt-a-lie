@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Quadro from "../Quadro";
 import fundo from '../assets/intro/HALL.png'
@@ -172,12 +172,8 @@ export default function OficinaProgramacao({ cena, setCena, setComputadorAberto,
               }]}
           >
             <div className="decisao-botoes">
-              <button
-                className="button-geral"
-                onClick={() => setCena("final_ru_prog")}
-              >
+              <button className="button-geral" onClick={() => setCena("final_programacao")}>
                 Bora pro RU!
-
               </button>
 
               <button
@@ -191,22 +187,22 @@ export default function OficinaProgramacao({ cena, setCena, setComputadorAberto,
         </>
       )}
 
-        {cena === "final_ru_prog" && (
+        {cena === "final_programacao" && (
           <>
-           <Quadro bgImage={CENA6FUNDO}>
-            <div className="decisao-botoes">
-              <button className="button-geral-text" onClick={() => setCena("ver_foto_prog")}>
-                Você acompanha a Eve até o RU enquanto ela vai explicando, entre risadas tímidas, como funcionam as filas, os horários e até quais pratos “valem o risco”. No caminho, a conversa começa falando sobre programação, desenhos feitos com código e jogos antigos, mas aos poucos ela vai ficando mais confortável perto de você, comentando coisas aleatórias do dia a dia e soltando piadas baixinho só pra te fazer rir. Quando chegam na entrada do RU, Eve estende a mão pra você com um sorriso envergonhado, como se aquele convite tivesse virado algo maior no meio do caminho, e naquele momento fica difícil dizer se ela só queria ajudar alguém da oficina… ou encontrar mais um motivo pra continuar perto de você.
-              </button>
-              <button className="button-geral" onClick={() => setCena("ver_foto_prog")}>
-                Ver Foto 
+           <Quadro bgImage="#000000">
+              <div className="decisao-botoes">
+                <button className="button-geral-text" onClick={() => setCena("ver_foto_programacao")}>
+                  Você acompanha a Eve até o RU enquanto ela vai explicando, entre risadas tímidas, como funcionam as filas, os horários e até quais pratos “valem o risco”. No caminho, a conversa começa falando sobre programação, desenhos feitos com código e jogos antigos, mas aos poucos ela vai ficando mais confortável perto de você, comentando coisas aleatórias do dia a dia e soltando piadas baixinho só pra te fazer rir. Quando chegam na entrada do RU, Eve estende a mão pra você com um sorriso envergonhado, como se aquele convite tivesse virado algo maior no meio do caminho, e naquele momento fica difícil dizer se ela só queria ajudar alguém da oficina… ou encontrar mais um motivo pra continuar perto de você.
                 </button>
-            </div> 
-            </Quadro>
+                <button className="button-geral" onClick={() => setCena("ver_foto_programacao")}>
+                  Ver Foto 
+                </button>
+              </div> 
+           </Quadro>
           </>
         )}
 
-        {cena === "ver_foto_prog" && (
+        {cena === "ver_foto_programacao" && (
           <>
            <Quadro bgImage={IMAGEM_FINAL}>
             </Quadro>

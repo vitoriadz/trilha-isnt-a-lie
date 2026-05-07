@@ -14,9 +14,9 @@ export default function MiniGameDesign({ onWin }) {
 
   const [itens, setItens] = useState([
     { id: "desc", text: "Strogonoff de Frango com batata palha", type: "detalhe", label: "Descrição" },
-    { id: "price", text: "R$ 1,10", type: "preco", label: "Preço" },
-    { id: "icon", text: "ℹ️ Mais informações", type: "info", label: "Metadados" },
     { id: "title", text: "CARDÁPIO DO DIA", type: "titulo", label: "Título" },
+    { id: "icon", text: "ℹ️ Mais informações", type: "info", label: "Metadados" },
+    { id: "price", text: "R$ 1,10", type: "preco", label: "Preço" }
   ]);
 
   const [progresso, setProgresso] = useState(0);
@@ -76,7 +76,7 @@ export default function MiniGameDesign({ onWin }) {
 
             {/* BALÃO 3 */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.5, y: -50 }}
+              initial={{ opacity: 0, scale: 0.5, y: -55 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.5 }}
               transition={{ delay: 1.0 }}
